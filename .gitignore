@@ -10,7 +10,9 @@ out/production
 *.iml
 *.ipr
 *.mvn
+*.mvn/
 mvnw.cmd
+mvw file
 .idea/modules.xml
 .idea/jarRepositories.xml
 .idea/compiler.xml
