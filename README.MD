@@ -42,5 +42,5 @@ Users should be able to update a travel package
                        - Antal Csaba
 * Java version: 17
 * Maven
-* Framework: Spring Boot 333
+* Framework: Spring Boot 3.3.3
 * Packaging: Jar file
