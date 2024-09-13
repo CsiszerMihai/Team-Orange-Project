@@ -13,7 +13,7 @@ import java.time.Period;
 public class TravelPackage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     @Column(name = "package_name")
     private String name;
     @Column(name = "destination")
