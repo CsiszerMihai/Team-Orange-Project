@@ -28,12 +28,12 @@ public class TravelPackageController {
 
     @PutMapping("api/travel_packages")
     public ResponseEntity<TravelPackageDTO> updateTravelPackage(Long id, TravelPackageDTO travelPackageDTO) {
-        return ResponseEntity.ok(travelPackageService.updateTravelPackage(id, travelPackageDTO));
+        return ResponseEntity.ok(travelPackageService.updateTravelPackageById(id, travelPackageDTO));
     }
 
     @DeleteMapping("api/travel_packages")
     public ResponseEntity<Void> deleteTravelPackage(Long id) {
-        travelPackageService.deleteTravelPackage(id);
+        travelPackageService.deleteTravelPackageById(id);
         return ResponseEntity.noContent().build();
     }
 }
