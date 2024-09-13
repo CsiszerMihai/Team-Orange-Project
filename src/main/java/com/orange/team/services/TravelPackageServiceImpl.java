@@ -1,6 +1,7 @@
 package com.orange.team.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.orange.team.exceptions.TravelPackageNotFoundException;
 import com.orange.team.models.dtos.TravelPackageDTO;
 import com.orange.team.models.entities.TravelPackage;
 import com.orange.team.repositories.TravelPackageRepository;
@@ -42,27 +43,36 @@ public class TravelPackageServiceImpl implements TravelPackageService {
     }
 
     @Override
-    public TravelPackageDTO updateTravelPackage(Long id, TravelPackageDTO travelPackageDTO) {
+    public TravelPackageDTO updateTravelPackageById(Long id, TravelPackageDTO travelPackageDTO) {
+        if (id == null) {
+            throw new IllegalArgumentException("Travel Package ID cannot be null.");
+        }
         TravelPackage existingPackage = travelPackageRepository.findById(id)
-        .orElseThrow(() -> new RuntimeException("Travel Package not found with id: " + id));
+                .orElseThrow(() -> new TravelPackageNotFoundException(id));
 
-        existingPackage.setName(travelPackageDTO.getName());
-        existingPackage.setDestination(travelPackageDTO.getDestination());
-        existingPackage.setDescription(travelPackageDTO.getDescription());
-        existingPackage.setDuration(travelPackageDTO.getDuration());
-        existingPackage.setPrice(travelPackageDTO.getPrice());
-        existingPackage.setAvailableDates(travelPackageDTO.getAvailableDates());
-
+        updateExistingPackage(existingPackage, travelPackageDTO);
         TravelPackage updatedPackage = travelPackageRepository.save(existingPackage);
         log.info("Travel Package with id {} was updated", updatedPackage.getId());
 
-        return objectMapper.convertValue(updatedPackage,TravelPackageDTO.class);
+        return objectMapper.convertValue(updatedPackage, TravelPackageDTO.class);
+    }
+
+    private void updateExistingPackage(TravelPackage existingPackage, TravelPackageDTO travelPackageDTO) {
+        existingPackage.setPackageName(travelPackageDTO.getPackageName());
+        existingPackage.setDestination(travelPackageDTO.getDestination());
+        existingPackage.setPackageDescription(travelPackageDTO.getPackageDescription());
+        existingPackage.setDuration(travelPackageDTO.getDuration());
+        existingPackage.setPricePerPerson(travelPackageDTO.getPricePerPerson());
+        existingPackage.setAvailableDate(travelPackageDTO.getAvailableDate());
     }
 
     @Override
-    public void deleteTravelPackage(Long id) {
+    public void deleteTravelPackageById(Long id) {
+        if (id == null) {
+            throw new IllegalArgumentException("Travel Package ID cannot be null.");
+        }
         TravelPackage existingPackage = travelPackageRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Travel package not found with id: " + id));
+                .orElseThrow(() -> new TravelPackageNotFoundException(id));
 
         travelPackageRepository.delete(existingPackage);
         log.info("Travel Package with id {} was deleted", id);

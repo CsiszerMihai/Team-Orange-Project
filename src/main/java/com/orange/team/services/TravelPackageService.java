@@ -7,7 +7,10 @@ import java.util.List;
 public interface TravelPackageService {
 
     TravelPackageDTO createTravelPackage(TravelPackageDTO travelPackageDTO);
+
     List<TravelPackageDTO> getTravelPackages();
-    TravelPackageDTO updateTravelPackage(Long id, TravelPackageDTO travelPackageDTO);
-    void deleteTravelPackage(Long id);
+
+    TravelPackageDTO updateTravelPackageById(Long id, TravelPackageDTO travelPackageDTO);
+
+    void deleteTravelPackageById(Long id);
 }

@@ -1,18 +1,18 @@
 package com.orange.team.models.dtos;
 
 import lombok.Data;
+
 import java.time.LocalDate;
 import java.time.Period;
 
 @Data
-
 public class TravelPackageDTO {
 
     private long id;
-    private String name;
+    private String packageName;
     private String destination;
-    private String description;
+    private String packageDescription;
     private Period duration;
-    private double price;
-    private LocalDate availableDates;
+    private double pricePerPerson;
+    private LocalDate availableDate;
 }
