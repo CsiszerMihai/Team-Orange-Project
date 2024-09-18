@@ -13,4 +13,6 @@ public interface TravelPackageService {
     TravelPackageDTO updateTravelPackageById(Long id, TravelPackageDTO travelPackageDTO);
 
     void deleteTravelPackageById(Long id);
+
+    List<TravelPackageDTO> searchTravelPackages(String destination);
 }

@@ -2,6 +2,7 @@ package com.orange.team.controllers;
 
 import com.orange.team.models.dtos.TravelPackageDTO;
 import com.orange.team.services.TravelPackageService;
+import jakarta.websocket.server.PathParam;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,5 +36,10 @@ public class TravelPackageController {
     public ResponseEntity<Void> deleteTravelPackage(Long id) {
         travelPackageService.deleteTravelPackageById(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("api/travel_packages/search")
+    public ResponseEntity<List<TravelPackageDTO>> searchTravelPackages(@PathParam("destination") String destination) {
+        return ResponseEntity.ok(travelPackageService.searchTravelPackages(destination));
     }
 }

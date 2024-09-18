@@ -77,4 +77,13 @@ public class TravelPackageServiceImpl implements TravelPackageService {
         travelPackageRepository.delete(existingPackage);
         log.info("Travel Package with id {} was deleted", id);
     }
+
+    @Override
+    public List<TravelPackageDTO> searchTravelPackages(String destination) {
+        List<TravelPackage> travelPackages = travelPackageRepository.findAll();
+        return travelPackages.stream()
+                .filter(travelPackage -> travelPackage.getDestination().equals(destination))
+                .map(travelPackage -> objectMapper.convertValue(travelPackage, TravelPackageDTO.class))
+                .toList();
+    }
 }
