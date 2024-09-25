@@ -5,12 +5,10 @@ import com.orange.team.exceptions.TravelPackageNotFoundException;
 import com.orange.team.models.dtos.TravelPackageDTO;
 import com.orange.team.models.entities.TravelPackage;
 import com.orange.team.repositories.TravelPackageRepository;
-import jakarta.persistence.Id;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import java.time.Period;
 import java.util.List;
 
 @Service
