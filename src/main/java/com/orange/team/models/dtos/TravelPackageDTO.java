@@ -12,7 +12,7 @@ public class TravelPackageDTO {
     private String packageName;
     private String destination;
     private String packageDescription;
-    private Period duration;
+    private Period packageDuration;
     private double pricePerPerson;
     private LocalDate availableDate;
 }

@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import java.time.Period;
 import java.util.List;
 
 @Service
@@ -61,7 +62,7 @@ public class TravelPackageServiceImpl implements TravelPackageService {
         existingPackage.setPackageName(travelPackageDTO.getPackageName());
         existingPackage.setDestination(travelPackageDTO.getDestination());
         existingPackage.setPackageDescription(travelPackageDTO.getPackageDescription());
-        existingPackage.setDuration(travelPackageDTO.getDuration());
+        existingPackage.setPackageDuration(travelPackageDTO.getPackageDuration());
         existingPackage.setPricePerPerson(travelPackageDTO.getPricePerPerson());
         existingPackage.setAvailableDate(travelPackageDTO.getAvailableDate());
     }
