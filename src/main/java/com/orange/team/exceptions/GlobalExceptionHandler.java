@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import java.util.Map;
 
-import static org.springframework.http.HttpStatus.BAD_REQUEST;
+import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 
 @Slf4j
@@ -24,17 +24,17 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(UserNotFoundWithIdException.class)
-    public ResponseEntity<String> userCreateException(UserNotFoundWithIdException userNotFoundWithIdException) {
-        return new ResponseEntity<>(objectToString(Map.of("message", userNotFoundWithIdException.getMessage())),BAD_REQUEST);
+    public ResponseEntity<String> userNotFoundWithIdException(UserNotFoundWithIdException userNotFoundWithIdException) {
+        return new ResponseEntity<>(objectToString(Map.of("message", userNotFoundWithIdException.getMessage())), NOT_FOUND);
     }
 
     @ExceptionHandler(TravelPackageNotFoundException.class)
     public ResponseEntity<String> travelPackageNotFoundException(TravelPackageNotFoundException travelPackageNotFoundException) {
-        return new ResponseEntity<>(objectToString(Map.of("message", travelPackageNotFoundException.getMessage())),BAD_REQUEST);
+        return new ResponseEntity<>(objectToString(Map.of("message", travelPackageNotFoundException.getMessage())), NOT_FOUND);
     }
 
     private String objectToString(Object response) {
-        try{
+        try {
             return objectMapper.writeValueAsString(response);
         } catch (JsonProcessingException e) {
             log.error("Error processing response to string");
