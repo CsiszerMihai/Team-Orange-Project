@@ -1,6 +1,7 @@
 package com.orange.team.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.orange.team.exceptions.GlobalExceptionHandler;
 import com.orange.team.exceptions.TravelPackageNotFoundException;
 import com.orange.team.models.dtos.TravelPackageDTO;
 import com.orange.team.models.entities.TravelPackage;
