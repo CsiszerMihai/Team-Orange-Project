@@ -23,9 +23,9 @@ public class GlobalExceptionHandler {
         this.objectMapper = objectMapper;
     }
 
-    @ExceptionHandler(UserCreateException.class)
-    public ResponseEntity<String> userCreateException(UserCreateException userCreateException) {
-        return new ResponseEntity<>(objectToString(Map.of("message", userCreateException.getMessage())),BAD_REQUEST);
+    @ExceptionHandler(UserNotFoundWithException.class)
+    public ResponseEntity<String> userCreateException(UserNotFoundWithException userNotFoundWithException) {
+        return new ResponseEntity<>(objectToString(Map.of("message", userNotFoundWithException.getMessage())),BAD_REQUEST);
     }
 
     @ExceptionHandler(TravelPackageNotFoundException.class)
