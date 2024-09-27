@@ -20,8 +20,8 @@ public class TravelPackage {
     private String destination;
     @Column(name = "package_description")
     private String packageDescription;
-    @Column(name = "duration")
-    private Period duration;
+    @Column(name = "package_duration")
+    private Period packageDuration;
     @Column(name = "price_per_person")
     private double pricePerPerson;
     @Column(name = "available_date")

@@ -1,6 +1,7 @@
 package com.orange.team.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.orange.team.exceptions.GlobalExceptionHandler;
 import com.orange.team.exceptions.TravelPackageNotFoundException;
 import com.orange.team.models.dtos.TravelPackageDTO;
 import com.orange.team.models.entities.TravelPackage;
@@ -10,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import java.time.Period;
 import java.util.List;
 
 @Service
@@ -61,7 +63,7 @@ public class TravelPackageServiceImpl implements TravelPackageService {
         existingPackage.setPackageName(travelPackageDTO.getPackageName());
         existingPackage.setDestination(travelPackageDTO.getDestination());
         existingPackage.setPackageDescription(travelPackageDTO.getPackageDescription());
-        existingPackage.setDuration(travelPackageDTO.getDuration());
+        existingPackage.setPackageDuration(travelPackageDTO.getPackageDuration());
         existingPackage.setPricePerPerson(travelPackageDTO.getPricePerPerson());
         existingPackage.setAvailableDate(travelPackageDTO.getAvailableDate());
     }
