@@ -16,22 +16,22 @@ public class TravelPackageController {
         this.travelPackageService = travelPackageService;
     }
 
-    @PostMapping("api/travel_packages")
+    @PostMapping("/api/travel_packages")
     public ResponseEntity<TravelPackageDTO> createTravelPackage(@RequestBody TravelPackageDTO travelPackageDTO) {
         return ResponseEntity.ok(travelPackageService.createTravelPackage(travelPackageDTO));
     }
 
-    @GetMapping("api/travel_packages")
+    @GetMapping("/api/travel_packages")
     public ResponseEntity<List<TravelPackageDTO>> getTravelPackages() {
         return ResponseEntity.ok(travelPackageService.getTravelPackages());
     }
 
-    @PutMapping("api/travel_packages")
+    @PutMapping("/api/travel_packages")
     public ResponseEntity<TravelPackageDTO> updateTravelPackage(Long id, TravelPackageDTO travelPackageDTO) {
         return ResponseEntity.ok(travelPackageService.updateTravelPackageById(id, travelPackageDTO));
     }
 
-    @DeleteMapping("api/travel_packages")
+    @DeleteMapping("/api/travel_packages")
     public ResponseEntity<Void> deleteTravelPackage(Long id) {
         travelPackageService.deleteTravelPackageById(id);
         return ResponseEntity.noContent().build();
